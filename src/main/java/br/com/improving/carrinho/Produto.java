@@ -30,26 +30,10 @@ public class Produto {
     }
 
     /**
-     * Seta o código do produto.
-     *
-     * @param codigo
-     */
-    public void setCodigo(Long codigo) {
-    }
-
-    /**
      * Retorna a descrição do produto.
      *
      * @return String
      */
     public String getDescricao() {
-    }
-
-    /**
-     * Seta a descrição do produto.
-     *
-     * @param descricao
-     */
-    public void setDescricao(String descricao) {
     }
 }

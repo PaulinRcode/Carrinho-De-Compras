@@ -30,14 +30,6 @@ public class Item {
     }
 
     /**
-     * Seta o produto.
-     *
-     * @param produto
-     */
-    public void setProduto(Produto produto) {
-    }
-
-    /**
      * Retorna o valor unitário do item.
      *
      * @return BigDecimal
@@ -46,27 +38,11 @@ public class Item {
     }
 
     /**
-     * Seta o valor unitário do item.
-     *
-     * @param valorUnitario
-     */
-    public void setValorUnitario(BigDecimal valorUnitario) {
-    }
-
-    /**
      * Retorna a quantidade dos item.
      *
      * @return int
      */
     public int getQuantidade() {
-    }
-
-    /**
-     * Seta a quantidade do item.
-     *
-     * @param quantidade
-     */
-    public void setQuantidade(int quantidade) {
     }
 
     /**
