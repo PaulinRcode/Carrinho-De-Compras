@@ -16,7 +16,7 @@ public class CarrinhoCompras {
      * deverá seguir as seguintes duas regras:
      * - Deverá ser alterada apenas a quantidade, sendo que o novo valor deverá ser a soma da quantidade
      * atual e o valor da quantidade passada como parâmetro.
-     * - Se o valor unitário informado for diferente do valor unitário atual do item, o novo valor uitário do item deverá ser
+     * - Se o valor unitário informado for diferente do valor unitário atual do item, o novo valor unitário do item deverá ser
      * o passado como parâmetro.
      *
      * Devem ser lançadas subclasses de RuntimeException caso não seja possível adicionar o item ao carrinho de compras.
