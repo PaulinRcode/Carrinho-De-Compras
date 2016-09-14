@@ -4,3 +4,5 @@ Você poderá criar novos atributos e métodos, mas é proibido mudar a assinatu
 existentes, exceto o construtor da classe CarrinhoCompras.
 
 A prova deve ser resolvida utilizando obrigatoriamente Java 8.
+
+Todos os requisitos funcionais tem que ser atendidos 100% para que sua solução seja aprovada.
