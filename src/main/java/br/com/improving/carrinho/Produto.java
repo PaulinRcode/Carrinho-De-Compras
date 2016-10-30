@@ -1,5 +1,7 @@
 package br.com.improving.carrinho;
 
+import java.math.BigDecimal;
+
 /**
  * Classe que representa um produto que pode ser adicionado
  * como item ao carrinho de compras.
@@ -11,6 +13,7 @@ public class Produto {
 
     private Long codigo;
     private String descricao;
+    private BigDecimal preco;
 
     /**
      * Construtor da classe Produto.
@@ -21,7 +24,7 @@ public class Produto {
     public Produto(Long codigo, String descricao) {
     }
     
-//region getters and setters
+//region getters
     /**
      * Retorna o código da produto.
      *
@@ -40,16 +43,12 @@ public class Produto {
     	return descricao;
     }
     
-    public void setCodigo(Long codigo) {
-		this.codigo = codigo;
+    public BigDecimal getPreco() {
+		return preco;
 	}
-
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
-	}
- //endregion
-	
-    @Override
+//endregion
+   
+	@Override
 	public String toString() {
 		return "Produto [descricao=" + descricao + "]";
 	}
