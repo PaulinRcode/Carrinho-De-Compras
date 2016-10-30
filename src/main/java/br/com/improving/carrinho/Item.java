@@ -44,6 +44,10 @@ public class Item {
     public BigDecimal getValor() {
 		return valor;
 	}
+        
+	public void setValor(BigDecimal valor) {
+		this.valor = valor;
+	}
 
 	/**
      * Retorna a quantidade dos item.
