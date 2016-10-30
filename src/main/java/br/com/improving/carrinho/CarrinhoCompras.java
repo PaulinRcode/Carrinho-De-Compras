@@ -15,6 +15,10 @@ public class CarrinhoCompras {
 	private List<Item> listaItens;
 	private String identificacaoCliente;
 	
+	public CarrinhoCompras(String indentificacaoCliente) {
+		
+	}
+	
     /**
      * Permite a adição de um novo item no carrinho de compras.
      *
@@ -115,7 +119,9 @@ public class CarrinhoCompras {
     public BigDecimal getValorTotal() {
     	getItens().stream()
     	              //.filter(s -> s.getValorUnitario()) 
-     			      .forEach(s -> s.getValor().plus());
+    	              //.filter(s -> s.getValor().plus(s.getValor())
+     			      //.forEach(s -> s.getValor().plus());
+     			      .forEach(s -> s.getValorTotal().plus());
     	return (BigDecimal) getItens(); 
     }
 
