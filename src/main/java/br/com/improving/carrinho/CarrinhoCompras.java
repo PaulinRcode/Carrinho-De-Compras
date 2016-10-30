@@ -2,13 +2,18 @@ package br.com.improving.carrinho;
 
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Classe que representa o carrinho de compras de um cliente.
  */
 public class CarrinhoCompras {
 
+	private List<Item> listaItens;
+	
     /**
      * Permite a adição de um novo item no carrinho de compras.
      *
@@ -26,7 +31,28 @@ public class CarrinhoCompras {
      * @param quantidade
      */
     public void adicionarItem(Produto produto, BigDecimal valorUnitario, int quantidade) {
-
+    	int posicaoEncontrada = -1;
+    	
+    	for(int pos = 0; pos < getItens().size() & posicaoEncontrada < 0; pos++) {
+    		Item itemTemporario = listaItens.get(pos);
+    		
+    		if(itemTemporario.getProduto().equals(produto)){
+    			posicaoEncontrada = pos;
+    		}    		
+    	}
+    	    	    	
+    	if(posicaoEncontrada < 0) {
+    		Item item = new Item(produto, valorUnitario, quantidade);
+    		item.setValor(item.getValorTotal());
+    		getItens().add(item);    		
+    	} else {
+			Item itemTemporario = listaItens.get(posicaoEncontrada);
+			quantidade = itemTemporario.getQuantidade() + 1;
+			Item item = new Item(produto, valorUnitario, quantidade);
+			item.setValor(item.getValorTotal());
+			
+			listaItens.set(posicaoEncontrada, item);
+		}
     }
 
     /**
@@ -59,7 +85,10 @@ public class CarrinhoCompras {
      * @return BigDecimal
      */
     public BigDecimal getValorTotal() {
-
+    	List<Item> lista = getItens().stream()
+     			.forEach(s -> s.getValor().plus(s.getValor())		
+    			.collect(Collectors.toList());
+    	item.getValorTotal();
     }
 
     /**
@@ -68,6 +97,9 @@ public class CarrinhoCompras {
      * @return Collection<Itens>
      */
     public Collection<Item> getItens() {
-
-    }
+    	if(listaItens == null) {
+    		listaItens = new ArrayList<>();
+    	}
+    	return listaItens;
+     }
 }
