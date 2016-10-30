@@ -40,19 +40,24 @@ public class CarrinhoCompras {
     			posicaoEncontrada = pos;
     		}    		
     	}
-    	    	    	
-    	if(posicaoEncontrada < 0) {
-    		Item item = new Item(produto, valorUnitario, quantidade);
-    		item.setValor(item.getValorTotal());
-    		getItens().add(item);    		
-    	} else {
-			Item itemTemporario = listaItens.get(posicaoEncontrada);
-			quantidade = itemTemporario.getQuantidade() + 1;
-			Item item = new Item(produto, valorUnitario, quantidade);
-			item.setValor(item.getValorTotal());
+    	
+    	try {	    	
+    	    if(posicaoEncontrada < 0) {
+    		   Item item = new Item(produto, valorUnitario, quantidade);
+    		   item.setValor(item.getValorTotal());
+    		   getItens().add(item);    		
+    	    } else {
+			  Item itemTemporario = listaItens.get(posicaoEncontrada);
+			  quantidade = itemTemporario.getQuantidade() + quantidade;
+			  valorUnitario = itemTemporario.getValorUnitario() == valorUnitario ? valorUnitario = itemTemporario.getValorUnitario() : valorUnitario;
+			  Item item = new Item(produto, valorUnitario, quantidade);
+			  item.setValor(item.getValorTotal());
 			
-			listaItens.set(posicaoEncontrada, item);
-		}
+			  listaItens.set(posicaoEncontrada, item);
+		    }
+    	}   catch(RuntimeException e) {
+    		  e.getStackTrace();
+    	    }  
     }
 
     /**
