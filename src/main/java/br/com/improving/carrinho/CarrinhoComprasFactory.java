@@ -1,12 +1,19 @@
 package br.com.improving.carrinho;
 
 import java.math.BigDecimal;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Classe responsável pela criação e recuperação dos carrinhos de compras.
  */
 public class CarrinhoComprasFactory {
 
+	Map<String, CarrinhoCompras> clientes = new HashMap<String, CarrinhoCompras>();
+	
     /**
      * Cria um carrinho de compras para o cliente passado como parâmetro.
      *
@@ -16,7 +23,15 @@ public class CarrinhoComprasFactory {
      * @return CarrinhoCompras
      */
     public CarrinhoCompras criar(String identificacaoCliente) {
-
+    	CarrinhoCompras carrinhoCompras = new CarrinhoCompras();
+    	
+    	if(clientes.containsKey(identificacaoCliente)) {
+    		carrinhoCompras = null;
+    	} else {
+    		clientes.put(identificacaoCliente, carrinhoCompras);
+    	}
+    	
+    	return carrinhoCompras;
     }
 
     /**
@@ -42,5 +57,15 @@ public class CarrinhoComprasFactory {
      */
     public boolean invalidar(String identificacaoCliente) {
 
+    }
+    
+    protected String validaCliente(String identificacaoCliente) {
+    	List<String> clientes = Arrays.asList("cliente1, cliente2, cliente3, cliente4");
+    	
+    	Comparator<String> c1 = (s1,s2) ->
+    	Integer.compare(s1.compareTo(s2), s2.compareTo(s1));
+    	
+    	System.out.println(clientes);
+    	
     }
 }
