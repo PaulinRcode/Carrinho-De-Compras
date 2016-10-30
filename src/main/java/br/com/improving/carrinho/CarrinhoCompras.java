@@ -112,10 +112,9 @@ public class CarrinhoCompras {
      * @return BigDecimal
      */
     public BigDecimal getValorTotal() {
-    	List<Item> lista = getItens().stream()
-     			.forEach(s -> s.getValor().plus(s.getValor())		
-    			.collect(Collectors.toList());
-    	item.getValorTotal();
+    	getItens().stream()
+    	              .filter(s -> s.getValorUnitario()) 
+     			      .forEach(s -> s.getValor().plus());		
     }
 
     /**
