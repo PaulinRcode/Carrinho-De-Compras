@@ -68,7 +68,23 @@ public class CarrinhoCompras {
      * caso o produto não exista no carrinho.
      */
     public boolean removerItem(Produto produto) {
-
+    	int posicaoEncontrada = -1;
+    	boolean temProduto;
+    	
+    	for(int pos = 0; pos < getItens().size() & posicaoEncontrada < 0; pos++) {
+    		Item itemTemp = listaItens.get(pos);
+    		
+    		if(itemTemp.getProduto().equals(produto)) {
+    			posicaoEncontrada = pos;
+    		}
+     	}
+    	
+    	if(posicaoEncontrada > -1) {
+    		getItens().remove(posicaoEncontrada);
+    	    return true;
+    	} else {
+    		return false;
+    	}
     }
 
     /**
@@ -80,7 +96,13 @@ public class CarrinhoCompras {
      * caso o produto não exista no carrinho.
      */
     public boolean removerItem(int posicaoItem) {
-
+    	try {
+    		listaItens.remove(posicaoItem);
+    		return true;
+    	    }
+    	    catch(RuntimeException e) {
+    		 return false;
+    	}
     }
 
     /**
