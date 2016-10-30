@@ -9,6 +9,7 @@ public class Item {
 
     private Produto produto;
     private BigDecimal valorUnitario;
+    private BigDecimal valor;
     private int quantidade;
 
     /**
@@ -20,13 +21,15 @@ public class Item {
      */
     public Item(Produto produto, BigDecimal valorUnitario, int quantidade) {
     }
-
+    
+//region getters
     /**
      * Retorna o produto.
      *
      * @return Produto
      */
     public Produto getProduto() {
+    	return produto;
     }
 
     /**
@@ -35,22 +38,35 @@ public class Item {
      * @return BigDecimal
      */
     public BigDecimal getValorUnitario() {
+    	return valorUnitario;
     }
+    
+    public BigDecimal getValor() {
+		return valor;
+	}
 
-    /**
+	/**
      * Retorna a quantidade dos item.
      *
      * @return int
      */
     public int getQuantidade() {
+    	return quantidade;
     }
-
+//endregion
+    
     /**
      * Retorna o valor total do item.
      *
      * @return BigDecimal
      */
     public BigDecimal getValorTotal() {
-
+    	return valorUnitario.multiply(new BigDecimal(quantidade));
     }
+
+	@Override
+	public String toString() {
+		return "Item [produto=" + produto + ", valorUnitario=" + valorUnitario + ", valor=" + valor + ", quantidade=" + quantidade + "]";
+	}
+        
 }
