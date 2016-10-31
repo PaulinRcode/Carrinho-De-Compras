@@ -1,8 +1,8 @@
 package br.com.improving.carrinho;
 
 import java.math.BigDecimal;
-import java.util.Arrays;
-import java.util.Comparator;
+import java.math.RoundingMode;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -12,7 +12,7 @@ import java.util.Map;
  */
 public class CarrinhoComprasFactory {
 
-	Map<String, CarrinhoCompras> clientes = new HashMap<String, CarrinhoCompras>();
+	Map<String, CarrinhoCompras> carrinhosCompras = new HashMap<String, CarrinhoCompras>();
 	
     /**
      * Cria um carrinho de compras para o cliente passado como parâmetro.
@@ -25,10 +25,10 @@ public class CarrinhoComprasFactory {
     public CarrinhoCompras criar(String identificacaoCliente) {
     	CarrinhoCompras carrinhoCompras = new CarrinhoCompras();
     	
-    	if(clientes.containsKey(identificacaoCliente)) {
+    	if(carrinhosCompras.containsKey(identificacaoCliente)) {
     		carrinhoCompras = null;
     	} else {
-    		clientes.put(identificacaoCliente, carrinhoCompras);
+    		carrinhosCompras.put(identificacaoCliente, carrinhoCompras);
     	}
     	
     	return carrinhoCompras;
@@ -44,8 +44,13 @@ public class CarrinhoComprasFactory {
      * @return BigDecimal
      */
     public BigDecimal getValorTicketMedio() {
-
-    }
+    	List<CarrinhoCompras> carrinhoComprasL = new ArrayList<>(carrinhosCompras.values());
+    	
+    	carrinhoComprasL.stream()
+    	                    .forEach(s -> s.getValorTotal().plus().divide(new BigDecimal(carrinhoComprasL.size())));
+        BigDecimal valorTicketMedio = (BigDecimal) carrinhoComprasL;
+        return valorTicketMedio.setScale(2, RoundingMode.HALF_EVEN);
+   	}
 
     /**
      * Invalida um carrinho de compras quando o cliente faz um checkout ou sua sessão expirar.
@@ -56,16 +61,12 @@ public class CarrinhoComprasFactory {
      * e false caso o cliente não possua um carrinho.
      */
     public boolean invalidar(String identificacaoCliente) {
-
-    }
-    
-    protected String validaCliente(String identificacaoCliente) {
-    	List<String> clientes = Arrays.asList("cliente1, cliente2, cliente3, cliente4");
-    	
-    	Comparator<String> c1 = (s1,s2) ->
-    	Integer.compare(s1.compareTo(s2), s2.compareTo(s1));
-    	
-    	System.out.println(clientes);
-    	
+    	try {
+    		carrinhosCompras.remove(identificacaoCliente);
+    		return true;
+    	    }
+    	    catch(RuntimeException e) {
+    		 return false;
+    	}
     }
 }
