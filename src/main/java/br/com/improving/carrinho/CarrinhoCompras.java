@@ -5,7 +5,6 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * Classe que representa o carrinho de compras de um cliente.
@@ -13,12 +12,7 @@ import java.util.stream.Collectors;
 public class CarrinhoCompras {
 
 	private List<Item> listaItens;
-	private String identificacaoCliente;
-	
-	public CarrinhoCompras(String indentificacaoCliente) {
-		
-	}
-	
+
     /**
      * Permite a adição de um novo item no carrinho de compras.
      *
@@ -74,7 +68,6 @@ public class CarrinhoCompras {
      */
     public boolean removerItem(Produto produto) {
     	int posicaoEncontrada = -1;
-    	boolean temProduto;
     	
     	for(int pos = 0; pos < getItens().size() & posicaoEncontrada < 0; pos++) {
     		Item itemTemp = listaItens.get(pos);
