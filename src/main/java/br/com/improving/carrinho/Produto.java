@@ -1,6 +1,5 @@
 package br.com.improving.carrinho;
 
-import java.math.BigDecimal;
 
 /**
  * Classe que representa um produto que pode ser adicionado
@@ -13,8 +12,7 @@ public class Produto {
 
     private Long codigo;
     private String descricao;
-    private BigDecimal preco;
-
+ 
     /**
      * Construtor da classe Produto.
      *
@@ -42,10 +40,6 @@ public class Produto {
     public String getDescricao() {
     	return descricao;
     }
-    
-    public BigDecimal getPreco() {
-		return preco;
-	}
 //endregion
    
 	@Override
